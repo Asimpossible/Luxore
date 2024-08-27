@@ -2,6 +2,7 @@ import React from "react"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+const Loading = React.lazy(() => import('@/shared/components/Loading'))
 const Header = React.lazy(() => import('@/shared/layout/Header'))
 const Footer = React.lazy(() => import('@/shared/layout/Footer'))
 const Home = React.lazy(() => import('@/pages/Home'))
@@ -13,7 +14,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-        <React.Suspense fallback={'Loading page '} >
+        <React.Suspense fallback={<Loading />} >
           <Routes>
             <Route path="/" element={<Home />}>
             </Route>

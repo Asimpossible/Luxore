@@ -2,15 +2,25 @@ import React from 'react'
 import { FaSearch } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { SlBasket } from "react-icons/sl";
+import { Link } from 'react-router-dom';
 
 const Index: React.FC = () => {
     return (
         <>
             <div className="header w-full flex justify-between px-20 py-5 shadow-xl">
-                <div className='header--title text-3xl font-mono text-yellow-800'>
-                    Luxore
+                <ul>
+                    <li className='cursor-pointer text-3xl font-mono text-yellow-800'>
+                        <Link to={'/'}>Luxore</Link>
+                    </li>
+                </ul>
+                <div>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
                 </div>
-                <div className="header--right text-yellow-800 text-xl flex items-center justify-center gap-3">
+                <div className=" text-yellow-800 text-xl flex items-center justify-center gap-3">
                     <div className="search__input flex items-center">
                         <input type="text" placeholder='Search..' className='border-b-2 border-yellow-800 focus:outline-none p-1' />
                         <FaSearch className='cursor-pointer' />
