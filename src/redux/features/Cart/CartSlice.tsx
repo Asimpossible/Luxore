@@ -1,36 +1,35 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+/* eslint-disable react-refresh/only-export-components */
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IData, IProduct } from "./types";
-import persistReducer from "redux-persist/es/persistReducer";
+import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-const initialState: IData = {
+const initialState = {
   basket: [],
   totalPrice: 0
 }
 
 const CartSlice = createSlice({
-  name: 'Cart',
+  name: 'Basket',
   reducers: {
     addToBasket: (state: IData, action: PayloadAction<IProduct>) => {
-      state.basket.push(action.payload)
-      state.totalPrice = state.basket.reduce((acc, cur) => {
-        return acc + Number(cur.price)
-      }, 0)
+      state.basket.push(action.payload),
+        state.totalPrice = state.basket.reduce((acc, cur) => {
+          return acc + Number(cur.price)
+        }, 0)
     }
   },
   initialState
-
 })
 
 export const { addToBasket } = CartSlice.actions
-
-export const productsReducer = persistReducer(
-  {
-    key: 'Cart',
-    storage,
-    whitelist: [
-      'basket',
-      'totalPrice'
-    ]
-  }, CartSlice.reducer)
+const persistCart = {
+  key: "Cart",
+  storage: storage,
+  whitelist: [
+    "basket",
+    "totalPrice",
+  ],
+}
+export const productsReducer = persistReducer(persistCart, CartSlice.reducer);
 export default productsReducer;

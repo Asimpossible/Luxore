@@ -4,9 +4,11 @@ import React from 'react'
 const Index: React.FC = () => {
     return (
         <>
-            <SliderComponent />
-            <Sorting />
-            <Products />
+            <div className='bg-zinc-100'>
+                <SliderComponent />
+                <Sorting />
+                <Products />
+            </div>
         </>
     )
 }
