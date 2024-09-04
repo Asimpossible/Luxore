@@ -1,4 +1,4 @@
-import { Products, SliderComponent, Sorting } from '@/shared/components'
+import { Advantages, Manufacture, Products, SliderComponent } from '@/shared/components'
 import React from 'react'
 
 const Index: React.FC = () => {
@@ -6,8 +6,9 @@ const Index: React.FC = () => {
         <>
             <div className='bg-zinc-100'>
                 <SliderComponent />
-                <Sorting />
                 <Products />
+                <Manufacture />
+                <Advantages />
             </div>
         </>
     )

@@ -1,9 +1,10 @@
 //!Complete the right side of header design 
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { BiSearch } from 'react-icons/bi';
 import './Header.scss'
+import { useAppSelector } from '@/redux/store';
 const Index: React.FC = () => {
+    const { basket } = useAppSelector(state => state.reducer)
     const [isScrolled, setIsScrolled] = React.useState(false);
 
     const handleScroll = () => {
@@ -30,19 +31,24 @@ const Index: React.FC = () => {
                         <Link to={'/'}>Luxore</Link>
                     </li>
                 </ul>
-                <div className="text-slate-200 text-3xl flex items-center justify-center gap-3">
-                    <div className="search__input flex items-center">
-                        <BiSearch className='cursor-pointer bg-yellow-900 rounded-full items-center p-1 w-9 h-9' />
+                <div className="text-slate-200 text-3xl flex items-center justify-center gap-2">
+                    <div className="search__input">
+                        <div className="searchContainer">
+                            <input type="text" name="text" className="input" required placeholder="Type to search..." />
+                            <div className="icon">
+                                <img src="/images/searchIcon.svg" alt="" />
+                            </div>
+                        </div>
                     </div>
                     <div className='favorite'>
-                        <div className="container">
+                        <div className="favContainer">
                             <div className="inner-ring">
-                                <div className="button">
+                                <div className="favButton">
                                     <svg
-                                        style={{ fill: "rgba(240, 73, 73, 1)" }}
+                                        style={{ fill: "rgba(232,232,232, 1)" }}
                                         viewBox="0 0 24 24"
-                                        height="36"
-                                        width="36"
+                                        height="20"
+                                        width="20"
                                         className="heart"
                                         xmlns="http://www.w3.org/2000/svg"
                                     >
@@ -56,13 +62,15 @@ const Index: React.FC = () => {
 
                     </div>
                     <div className="header__basket items-center cursor-pointer box-border">
-                        <button data-quantity="2" className="btn-cart">
-                            <svg className="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38" xmlns="http://www.w3.org/2000/svg">
-                                <title>icon-cart</title>
-                                <path transform="translate(-3.62 -0.85)" d="M28,27.3,26.24,7.51a.75.75,0,0,0-.76-.69h-3.7a6,6,0,0,0-12,0H6.13a.76.76,0,0,0-.76.69L3.62,27.3v.07a4.29,4.29,0,0,0,4.52,4H23.48a4.29,4.29,0,0,0,4.52-4ZM15.81,2.37a4.47,4.47,0,0,1,4.46,4.45H11.35a4.47,4.47,0,0,1,4.46-4.45Zm7.67,27.48H8.13a2.79,2.79,0,0,1-3-2.45L6.83,8.34h3V11a.76.76,0,0,0,1.52,0V8.34h8.92V11a.76.76,0,0,0,1.52,0V8.34h3L26.48,27.4a2.79,2.79,0,0,1-3,2.44Zm0,0"></path>
-                            </svg>
-                            <span className="quantity"></span>
-                        </button>
+                        <Link to={"/basket"}>
+                            <button data-quantity={basket?.length} className="btn-cart">
+                                <svg className="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38" xmlns="http://www.w3.org/2000/svg">
+                                    <title>icon-cart</title>
+                                    <path transform="translate(-3.62 -0.85)" d="M28,27.3,26.24,7.51a.75.75,0,0,0-.76-.69h-3.7a6,6,0,0,0-12,0H6.13a.76.76,0,0,0-.76.69L3.62,27.3v.07a4.29,4.29,0,0,0,4.52,4H23.48a4.29,4.29,0,0,0,4.52-4ZM15.81,2.37a4.47,4.47,0,0,1,4.46,4.45H11.35a4.47,4.47,0,0,1,4.46-4.45Zm7.67,27.48H8.13a2.79,2.79,0,0,1-3-2.45L6.83,8.34h3V11a.76.76,0,0,0,1.52,0V8.34h8.92V11a.76.76,0,0,0,1.52,0V8.34h3L26.48,27.4a2.79,2.79,0,0,1-3,2.44Zm0,0"></path>
+                                </svg>
+                                <span className="quantity"></span>
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div >
