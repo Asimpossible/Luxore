@@ -58,19 +58,19 @@ const Index: React.FC = () => {
     return (
         <>
             <div className='detail pt-[150px] flex justify-center items-center'>
-                <div className={`productDiv mb-16 bg-slate-100 cursor-default rounded-xl !w-[60rem] flex ${isTitleExpanded ? "h-auto" : "h-[30rem]"}`}>
+                <div className={`productDiv mb-16 bg-slate-100 cursor-default rounded-xl !w-[60rem] flex ${isTitleExpanded ? "h-[30rem]" : "h-[30rem]"} ${isDescExpanded ? "h-auto" : "h-[30rem]"}`}>
                     <div className="productImg w-[55%] pr-4">
                         <img className='w-full h-full rounded-l-xl' src={products?.image} alt="" />
                     </div>
                     <div className="productDesc py-12 px-5 flex flex-col justify-around items-start">
-                        <div className={`title font-bold !w-80 h-auto ${isTitleExpanded ? 'text-xl' : 'text-2xl'}`}>
-                            {isTitleExpanded ? products?.description : `${products?.title?.slice(0, 30)}...`}
+                        <div className={`title font-bold !w-80  ${isTitleExpanded ? 'text-xl' : 'text-2xl'}`}>
+                            {isTitleExpanded ? products?.title : `${products?.title?.slice(0, 30)}...`}
                             <span onClick={toggleTitleText} className="cursor-pointer text-blue-500 !text-xl ">
                                 {isTitleExpanded ? <span> <br />Show less</span> : <span><br /> Read more</span>}
                             </span>
                         </div>
 
-                        <div className="desc !w-96 font-normal text-gray-500">
+                        <div className={`desc !w-96 font-normal text-gray-500 h-auto`}>
                             {isDescExpanded ? products?.description : `${products?.description?.slice(0, 100)}...`}
                             <span onClick={toggleDescText} className="cursor-pointer text-blue-500">
                                 {isDescExpanded ? <span> <br />Show less</span> : <span><br /> Read more</span>}

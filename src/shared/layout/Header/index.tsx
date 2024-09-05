@@ -26,10 +26,20 @@ const Index: React.FC = () => {
         <>
             <div className={`header w-full flex justify-between px-20 py-5 fixed  transition-all duration-[400ms] top-0 left-0 z-50  
             ${isScrolled ? 'bg-bgGray shadow-lg text-black' : 'bg-transparent'}`}>
-                <ul>
-                    <li className='cursor-pointer text-4xl font-mono font-medium text-yellow-800'>
+                <ul className='flex items-center justify-start gap-5 w-1/2'>
+                    <li className='cursor-pointer text-4xl mr-8 font-mono font-medium text-yellow-800'>
                         <Link to={'/'}>Luxore</Link>
                     </li>
+                    <li className='cursor-pointer text-xl font-medium text-stone-600'>
+                        <Link to={'/products'}>Products</Link>
+                    </li>
+                    <li className='cursor-pointer text-xl font-medium text-stone-600'>
+                        <Link to={'/about'}>About</Link>
+                    </li>
+                    <li className='cursor-pointer text-xl font-medium text-stone-600'>
+                        <Link to={'/contact'}>Contact</Link>
+                    </li>
+
                 </ul>
                 <div className="text-slate-200 text-3xl flex items-center justify-center gap-2">
                     <div className="search__input">

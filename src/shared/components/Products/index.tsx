@@ -7,6 +7,7 @@ import Loading from '../Loading';
 const Index: React.FC = () => {
     const [activeItem, setActiveItem] = React.useState(1);
     const [selectedCategory, setSelectedCategory] = React.useState<string>("men's clothing")
+    const [expandedTitles, setExpandedTitles] = React.useState<{ [key: string]: boolean }>({})
     const { data: categoryData, isLoading, isError: categoryError } = useGetCategoryDataQuery(selectedCategory)
 
     if (isLoading) return <Loading />
@@ -14,6 +15,20 @@ const Index: React.FC = () => {
 
     const handleCategoryClick = (category: string) => {
         setSelectedCategory(category)
+    }
+
+    const toggleExpanded = (id: number) => {
+        setExpandedTitles((prevState) => ({
+            ...prevState,
+            [id]: !prevState[id]
+        }))
+    }
+
+    const renderTitle = (title: string, isExpanded: boolean) => {
+        const maxLength = 30;
+        return isExpanded || title.length <= maxLength
+            ? title
+            : `${title.substring(0, maxLength)}...`
     }
 
 
@@ -77,21 +92,30 @@ const Index: React.FC = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="products flex flex-wrap justify-between py-12 overflow-y-auto">
+                <div className="products flex flex-wrap gap-6 justify-between py-12 overflow-y-auto">
                     {
-                        categoryData?.map((item, index) => (
-                            <div key={index} className="card bg-white rounded-xl p-2 h-full my-2 cursor-pointer shadow-rgba(0, 0, 0, 0.15) w-[240px] pb-3">
-                                <Link to={`/products/${item.id}`} className='flex flex-col justify-around items-center'>
+                        categoryData?.map((item, index) => {
+                            const isExpanded = !!expandedTitles[item.id]
+                            return (
+                                <div key={index} className="card h-[27rem] flex flex-col justify-around bg-white rounded-xl p-2 my-2 cursor-pointer w-[240px] pb-3">
                                     <div className="cardImg w-full h-44 p-2 bg-white">
                                         <img className='w-full h-full' src={item.image} alt="" />
                                     </div>
-                                    <div className="cardTitle mt-3 text-xl text-center font-bold px-2">{item.title}</div>
-                                    <button className='detailBtn mt-5 mx-2 font-semibold'>
-                                        View Details
-                                    </button>
-                                </Link>
-                            </div>
-                        ))
+                                    <div className={`title pt-3 font-bold  ${isExpanded ? 'text-base' : 'text-lg'}`}>
+                                        {renderTitle(item.title, isExpanded)}
+                                        {item.title.length > 30 && (
+                                            <span onClick={() => toggleExpanded(item.id)} className="cursor-pointer text-blue-500 !text-xl ">
+                                                {isExpanded ? <span className='text-lg'> <br />Show less</span> : <span className='text-lg'><br /> Read more</span>}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <Link to={`/products/${item.id}`} className='flex flex-col justify-around items-center'>
+                                        <button className='detailBtn mt-5 mx-2 font-semibold'>
+                                            View Details
+                                        </button>
+                                    </Link>
+                                </div>)
+                        })
                     }
                 </div>
                 <div>
