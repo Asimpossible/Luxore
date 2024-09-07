@@ -34,7 +34,7 @@ const Index: React.FC = () => {
                         <img className='rounded-xl h-[25rem]' src="https://preview.colorlib.com/theme/cozastore/images/about-01.jpg" alt="" />
                     </div>
                     <div className="ourstory col-end-9 mr-5">
-                        <div className="title text-3xl font-bold mb-8">Our Story</div>
+                        <div className="title text-3xl font-bold mb-8">Our Mission</div>
                         <div className="desc w-[40rem] text-base">
                             Mauris non lacinia magna. Sed nec lobortis dolor. Vestibulum rhoncus dignissim risus, sed consectetur erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam maximus mauris sit amet odio convallis, in pharetra magna gravida. Praesent sed nunc fermentum mi molestie tempor. Morbi vitae viverra odio. Pellentesque ac velit egestas, luctus arcu non, laoreet mauris. Sed in ipsum tempor, consequat odio in, porttitor ante. Ut mauris ligula, volutpat in sodales in, porta non odio. Pellentesque tempor urna vitae mi vestibulum, nec venenatis nulla lobortis. Proin at gravida ante. Mauris auctor purus at lacus maximus euismod. Pellentesque vulputate massa ut nisl hendrerit, eget elementum libero iaculis.
                             <p className='text-gray-400 pl-12 border-l-2 mt-12 font-Lato italic'>Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.

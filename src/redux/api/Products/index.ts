@@ -5,7 +5,9 @@ const baseUrl = `${import.meta.env.VITE_BASE_URL}`
 
 export const productsApi = createApi({
     reducerPath: 'products',
-    baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: baseUrl,
+    }),
     endpoints: (builder) => ({
         getProducts: builder.query<IProduct[], number | void>({
             query(limit) {
@@ -16,7 +18,7 @@ export const productsApi = createApi({
                 }
             }
         }),
-        getProductById: builder.query<IProduct, string>({
+        getProductById: builder.query<IProduct, number>({
             query(id) {
                 return {
                     url: `products/${id}`,

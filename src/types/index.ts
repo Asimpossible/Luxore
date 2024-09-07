@@ -6,15 +6,21 @@ export interface IProduct {
     image: string,
     category: string,
     quantity: number,
-    rating: {
-        rate: number,
-        count: number
-    }
+    rating: IProductRating
+}
+
+export interface IProductRating {
+    rate: number,
+    count: number
 }
 
 export interface IData {
     basket: IProduct[],
     totalPrice: number
+}
+
+export interface IFavorites {
+    favorites: IProduct[],
 }
 
 

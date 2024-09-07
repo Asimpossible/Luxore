@@ -12,6 +12,13 @@ export default defineConfig({
     },
   },
   server: {
-    port: 3000
-  }
-})
+    // proxy: {
+    //   '/api': {
+    //     target: "https://fakestoreapi.com/",
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/api/, ''),
+    //   }
+    port: 5000
+  },
+}
+)

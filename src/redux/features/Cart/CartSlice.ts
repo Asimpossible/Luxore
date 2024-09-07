@@ -1,11 +1,12 @@
 /* eslint-disable react-refresh/only-export-components */
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IData, IProduct } from "@/types";
+import { IData, IFavorites, IProduct } from "@/types";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 const initialState = {
   basket: [],
+  favorites: [],
   totalPrice: 0,
 }
 
@@ -33,22 +34,38 @@ const CartSlice = createSlice({
         return acc + (Number(cur.price) * cur.quantity)
       }, 0)
     },
-    clearBasket: () => initialState,
     getTotalPrice: (state: IData) => {
       state.totalPrice = state.basket.reduce((acc, cur) => {
         return acc + (Number(cur.price) * cur.quantity)
       }, 0)
+    },
+    clearBasket: (state) => {
+      state.basket = initialState.basket
+      state.totalPrice = initialState.totalPrice
+    },
+    addToFavorites: (state: IFavorites, action: PayloadAction<IProduct>) => {
+      const isAlreadyFavorited = state.favorites.some(item => item.id === action.payload.id);
+      if (!isAlreadyFavorited) {
+        state.favorites.push(action.payload);
+      }
+    },
+    removeFromFavorites: (state: IFavorites, action: PayloadAction<number>) => {
+      state.favorites = state.favorites.filter((product) => product.id !== action.payload)
+    },
+    clearFavorites: (state) => {
+      state.favorites = []
     }
   },
   initialState
 })
 
-export const { addToBasket, removeFromBasket, clearBasket, getTotalPrice } = CartSlice.actions
+export const { addToBasket, removeFromBasket, clearBasket, getTotalPrice, addToFavorites, removeFromFavorites, clearFavorites } = CartSlice.actions
 const persistCart = {
   key: "Cart",
   storage: storage,
   whitelist: [
     "basket",
+    "favorites",
     "totalPrice",
   ],
 }

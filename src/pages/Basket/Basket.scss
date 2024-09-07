@@ -51,7 +51,6 @@
 }
 
 //* Clear Basket button
-/* From Uiverse.io by Peary74 */
 .del {
     cursor: pointer;
     position: relative;
@@ -85,7 +84,7 @@
     }
 
     &:hover div {
-        letter-spacing: 4px;
+        letter-spacing: 3px;
         color: #fff;
         background: #ff0000;
     }

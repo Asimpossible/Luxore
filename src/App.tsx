@@ -2,6 +2,7 @@ import React from "react"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Navigate, Route, Routes } from "react-router-dom"
+import { Favorites } from "./pages";
 
 const Basket = React.lazy(() => import('@/pages/Basket'))
 const Contact = React.lazy(() => import('@/pages/Contact'))
@@ -27,6 +28,7 @@ function App() {
           <Route path="/basket" element={<Basket />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
         <Footer />
       </React.Suspense>

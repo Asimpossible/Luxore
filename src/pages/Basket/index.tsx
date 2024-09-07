@@ -35,7 +35,6 @@ const Index: React.FC = () => {
                 basket.length > 0 ?
                     <div className='pt-8 flex flex-col gap-10'>
                         <div className='flex justify-around'>
-
                             <div className="del">
                                 <div onClick={() =>
                                     dispatch(clearBasket())
