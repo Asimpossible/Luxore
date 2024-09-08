@@ -5,6 +5,12 @@ import { CiLocationOn } from "react-icons/ci";
 
 
 const Index: React.FC = () => {
+    React.useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, []);
     return (
         <>
             <div className="contact">

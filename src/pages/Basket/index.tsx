@@ -7,6 +7,12 @@ import './Basket.scss'
 import { clearBasket } from '@/redux/features/Cart/CartSlice';
 
 const Index: React.FC = () => {
+    React.useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, []);
     const { basket, totalPrice } = useAppSelector(state => state.reducer)
     const dispatch = useAppDispatch()
     return (

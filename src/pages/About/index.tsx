@@ -1,12 +1,21 @@
 import React from 'react'
 
 const Index: React.FC = () => {
-    console.log('About page downloaded')
+    React.useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, []);
     return (
         <>
-            <div className="about pt-28">
-                <div className="heading">
-                    <div className="w-full h-56 absolute top-24 mb-96 inset-0 bg-cover bg-center transition-opacity duration-300 bg-[url('https://www.redspider.ae/wp-content/uploads/2020/06/ecommerce-seo-tips.jpg')] opacity-90">
+            <div className="about pt-28 
+            max-md:flex max-md:flex-col max-md:items-center max-md:justify-center">
+                <div className="heading  
+                max-md:flex max-md:w-screen max-md:justify-center max-md:items-center">
+                    <div className="w-full h-56 absolute top-24 mb-96 inset-0 bg-cover bg-center transition-opacity duration-300 bg-[url('https://www.redspider.ae/wp-content/uploads/2020/06/ecommerce-seo-tips.jpg')] opacity-90
+                    max-md:w-full
+                    ">
                         <div className="absolute inset-0 bg-black transition-opacity duration-500 opacity-70 hover:opacity-80"></div>
                     </div>
 

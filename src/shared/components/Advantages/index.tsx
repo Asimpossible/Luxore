@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from 'react';
 import { FaTruckFast } from "react-icons/fa6";
 import { RiSecurePaymentLine, Ri24HoursLine } from "react-icons/ri";

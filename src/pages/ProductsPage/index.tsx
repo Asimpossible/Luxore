@@ -5,6 +5,12 @@ import { Link } from 'react-router-dom'
 import '../../shared/components/Products/Products.scss'
 
 const Index: React.FC = () => {
+    React.useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, []);
     const { data: products, isLoading, isError } = useGetProductsQuery()
     const [expandedTitles, setExpandedTitles] = React.useState<{ [key: string]: boolean }>({})
 

@@ -21,7 +21,6 @@ const Index: React.FC<IBasketCompProps> = ({ product }) => {
                 <div onClick={(e) => {
                     e.preventDefault()
                     dispatch(removeFromBasket(product.id))
-                    console.log(product.quantity)
                 }}>
                     <button className="bin-button">
                         <svg

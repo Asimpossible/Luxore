@@ -1,5 +1,3 @@
-//! remove from favorites don't working and design clear favorites
-/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '@/redux/store'
@@ -8,6 +6,12 @@ import '../Basket/Basket.scss'
 import { IProduct } from '@/types'
 
 const FavoritesPage: React.FC = () => {
+    React.useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, []);
     const favorites = useAppSelector(state => state.reducer.favorites)
     const [expandedTitles, setExpandedTitles] = React.useState<{ [key: string]: boolean }>({})
 

@@ -3,18 +3,26 @@ import Loading from '@/shared/components/Loading'
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import './Detail.scss'
+import { Flip, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useAppDispatch, useAppSelector } from '@/redux/store'
 import { addToBasket, addToFavorites, removeFromFavorites } from '@/redux/features/Cart/CartSlice'
 import { IProduct } from '@/types'
 
 const Index: React.FC = () => {
+    React.useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, []);
+    const notify = () => (toast.success("Product added successfully!"))
     const { id } = useParams<{ id: string }>();
     const productId = Number(id)
     const { data: products, isLoading, isError } = useGetProductByIdQuery(productId || 0)
     const dispatch = useAppDispatch();
     const favorites = useAppSelector(state => state.reducer.favorites)
     const isFavorited = favorites.some((fav: IProduct) => fav.id === products?.id)
-    console.log("Is Favorited", isFavorited)
     const [stateQuantity, setQuantity] = React.useState<number>(1)
     const [isTitleExpanded, setIsTitleExpanded] = React.useState(false);
     const [isDescExpanded, setIsDescExpanded] = React.useState(false);
@@ -33,6 +41,8 @@ const Index: React.FC = () => {
                     rating: product?.rating as { rate: number, count: number },
                     quantity: stateQuantity
                 }))
+        notify()
+
     }
 
     const handleAddToFavorites = (id: number) => {
@@ -143,6 +153,20 @@ const Index: React.FC = () => {
                                     <span>{products?.price}</span>
                                 </div>
                             </button>
+                            <ToastContainer
+                                position="bottom-right"
+                                autoClose={1700}
+                                hideProgressBar={false}
+                                newestOnTop={false}
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                                theme="dark"
+                                transition={Flip}
+                                closeButton={false}
+                            />
 
                             <div className='addToFav'>
                                 <input

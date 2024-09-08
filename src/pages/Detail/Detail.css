@@ -1,0 +1,121 @@
+.productDiv {
+  transition: height 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.addBtn {
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0;
+  border: none;
+  background-color: hsl(255, 50%, 40%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  font-family: "Inter", sans-serif;
+}
+.addBtn .default-btn {
+  background-image: linear-gradient(90.1deg, rgb(84, 212, 228) 0.2%, rgb(68, 36, 164) 99.9%);
+}
+.addBtn .default-btn,
+.addBtn .hover-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 1em 3em;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.addBtn .hover-btn {
+  position: absolute;
+  inset: 0;
+  font-size: 16px;
+  padding: 1em 3em;
+  text-align: center;
+  background: rgb(26, 35, 126);
+  background: linear-gradient(63deg, rgb(26, 35, 126) 0%, rgb(69, 39, 160) 100%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  transform: translate(0%, 100%);
+}
+.addBtn .default-btn span,
+.addBtn .hover-btn span {
+  color: hsl(0, 0%, 100%);
+}
+.addBtn:hover .default-btn {
+  transform: translate(0%, -100%);
+}
+.addBtn:hover .hover-btn {
+  transform: translate(0%, 0%);
+}
+
+label {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 15px 10px 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  color: black;
+}
+label input {
+  display: none;
+}
+label input:checked + svg {
+  fill: hsl(0, 100%, 50%);
+  stroke: hsl(0, 100%, 50%);
+  animation: heartButton 1s;
+}
+label .action {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+}
+label .action span {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  transition: all 0.5s;
+}
+label .action span.option-1 {
+  transform: translate(0px, 0%);
+  opacity: 1;
+}
+input:checked + label label .action span.option-1 {
+  transform: translate(0px, -100%);
+  opacity: 0;
+}
+label .action span.option-2 {
+  transform: translate(0px, 100%);
+  opacity: 0;
+}
+input:checked + label label .action span.option-2 {
+  transform: translate(0px, 0%);
+  opacity: 1;
+}
+
+@keyframes heartButton {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.3);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}/*# sourceMappingURL=Detail.css.map */
